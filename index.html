@@ -42,7 +42,21 @@
                 <li>Compounding: Monthly</li>
             </ul>
         </div>
-    </div> <div id="Bonds" class="tab-content">
+
+        <div class="problem-card">
+            <h3>TVM #3: Calculating Time (n)</h3>
+            <p><strong>The Question:</strong> How long does it take $5,000 to grow to $10,000 at a 9.00% annual APR?</p>
+            <strong>Problem Data:</strong>
+            <ul>
+                <li>Starting Amount (PV): $5,000</li>
+                <li>Ending Amount (FV): $10,000</li>
+                <li>Annual Rate (I/Y): 9.00%</li>
+                <li>Compounding: Annual</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="Bonds" class="tab-content">
         <div class="problem-card">
             <h3>Bond #1: Zero-Coupon Bond</h3>
             <p><strong>The Question:</strong> Calculate the dollar bond value of a zero-coupon bond that matures in 10 years if the market interest rate is 0.00%.</p>
@@ -52,7 +66,9 @@
                 <li>Compounding: Semiannual</li>
                 <li>Par Value: $1,000</li>
             </ul>
-        </div> <div class="problem-card">
+        </div>
+        
+        <div class="problem-card">
             <h3>Bond #2: Coupon Bond and Total Return</h3>
             <p><strong>The Question:</strong> A 15-year bond with semi-annual coupon payments and a 6.00% coupon rate is currently valued at $1,000.</p>
             <ul>
@@ -67,7 +83,9 @@
                 <li>Compounding: Semi-annual</li>
                 <li>Par Value: $1,000</li>
             </ul>
-        </div> <div class="problem-card">
+        </div>
+        
+        <div class="problem-card">
             <h3>Bond #3: Municipal Bond Yields & Taxable Equivalent</h3>
             <p><strong>The Question:</strong> A 4.50% coupon municipal bond has 15 years left to maturity and has a price quote of 98.45%.</p>
             <strong>Your Tasks:</strong>
@@ -76,21 +94,60 @@
                 <li>Compute the taxable equivalent yield (36% tax bracket).</li>
                 <li>Compute the yield to call (YTC).</li>
             </ul>
-        </div> </div> <div id="Equities" class="tab-content">
+        </div>
+    </div>
+
+    <div id="Equities" class="tab-content">
         <div class="problem-card">
-            <h3>Equity Problem #1</h3>
-            <p>Paste your Equity problem text here.</p>
+            <h3>Equity #1: Two-Stage Dividend Growth</h3>
+            <p><strong>The Question:</strong> A fast-growing firm recently paid a dividend of $0.50 per share. The dividend is expected to increase at 18.00% for the next 3 years. After that, growth will settle into a stable 10.00% rate indefinitely. If the required return is 12.00%, what is the stock's value today?</p>
+            <strong>Problem Data:</strong>
+            <ul>
+                <li>Recent Dividend (D0): $0.50</li>
+                <li>High Growth Rate (g1): 18.00% (for 3 years)</li>
+                <li>Stable Growth Rate (g2): 10.00% (forever after)</li>
+                <li>Discount Rate (r): 12.00%</li>
+            </ul>
+        </div>
+        
+        <div class="problem-card">
+            <h3>Equity #2: Portfolio Beta & CAPM</h3>
+            <p><strong>The Question:</strong> You have $30,000 to invest in Security A and Security B. You want your total portfolio to have a <strong>Beta of 1.60</strong>. Based on the market data, how many shares should you buy, and what are the expected returns?</p>
+            <strong>Problem Data:</strong>
+            <ul>
+                <li><strong>Total Investment:</strong> $30,000</li>
+                <li><strong>Security A:</strong> Beta = 2.00, Price = $16.00</li>
+                <li><strong>Security B:</strong> Beta = 1.25, Price = $25.00</li>
+                <li><strong>Risk-Free Rate:</strong> 3.00%</li>
+                <li><strong>Market Return:</strong> 12.00%</li>
+            </ul>
         </div>
     </div>
 
     <div id="WACC" class="tab-content">
         <div class="problem-card">
-            <h3>WACC Problem #1</h3>
-            <p>Paste your WACC problem text here.</p>
-            <details>
-                <summary>Click for Formula Hint</summary>
-                <p>WACC = (we x re) + (wd x rd x (1 - T))</p>
-            </details>
+            <h3>WACC #1: Acquisition & Perpetuity Valuation</h3>
+            <p><strong>The Question:</strong> Big Firm is considering buying Small Firm. The acquisition is expected to generate perpetual after-tax cash flows of $30,000 per year beginning next year.</p>
+            <strong>Problem Data:</strong>
+            <ul>
+                <li>Annual Cash Flow (C): $30,000 (Perpetual)</li>
+                <li>Cost of Equity (Re): 15.00%</li>
+                <li>After-Tax Cost of Debt (Rd): 5.00%</li>
+                <li>Capital Structure: 30.00% Debt / 70.00% Equity</li>
+            </ul>
+        </div>
+
+        <div class="problem-card">
+            <h3>WACC #2: Cost of Equity (CAPM)</h3>
+            <p><strong>The Question:</strong> Based upon the information below, what is IBM Corp's cost of equity using retained earnings?</p>
+            <strong>Problem Data:</strong>
+            <ul>
+                <li>Market Price: $50.00</li>
+                <li>Beta ($\beta$): 1.15</li>
+                <li>Risk-Free Rate ($r_{rf}$): 5.00%</li>
+                <li>Expected Market Return ($r_m$): 15.00%</li>
+                <li>Flotation Cost: 0.155 (Ignore for Retained Earnings)</li>
+            </ul>
         </div>
     </div>
 

@@ -1,52 +1,85 @@
-body { font-family: sans-serif; background: #f4f7f6; padding: 40px; color: #333; }
-h1 { text-align: center; }
+/* Import a clean, modern font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
-/* Tab Bar */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f4f8; /* Soft light blue-grey background */
+    margin: 0;
+    padding: 20px;
+    color: #334e68;
+}
+
+/* Make the title pop with a gradient */
+h1 {
+    text-align: center;
+    font-weight: 600;
+    background: linear-gradient(90deg, #243b55, #141e30);
+    color: white;
+    padding: 40px 0;
+    margin: -20px -20px 40px -20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Styled Navigation Tabs */
 .tabs {
     display: flex;
     justify-content: center;
-    margin-bottom: 20px;
-    border-bottom: 2px solid #ccc;
+    gap: 10px;
+    margin-bottom: 30px;
 }
 
 .tab-link {
-    background: none;
+    background: white;
     border: none;
-    padding: 10px 20px;
+    padding: 12px 25px;
     cursor: pointer;
-    font-size: 18px;
-    transition: 0.3s;
-    border-bottom: 3px solid transparent;
+    border-radius: 50px; /* Round pill shape */
+    font-weight: 600;
+    color: #627d98;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
-.tab-link:hover { color: #2196F3; }
-.tab-link.active {
-    border-bottom: 3px solid #2196F3;
-    color: #2196F3;
-    font-weight: bold;
-}
+/* Category-specific active colors */
+.tab-link.active { color: white; transform: translateY(-3px); box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+/* Assign colors when active */
+.tab-link:nth-child(1).active { background-color: #2196F3; } /* TVM Blue */
+.tab-link:nth-child(2).active { background-color: #ffb100; } /* Bond Gold */
+.tab-link:nth-child(3).active { background-color: #4caf50; } /* Equity Green */
+.tab-link:nth-child(4).active { background-color: #9c27b0; } /* WACC Purple */
 
 /* Problem Cards */
-.tab-content { display: none; animation: fadeEffect 0.5s; }
-
 .problem-card {
     background: white;
-    padding: 20px;
-    margin: 10px auto;
-    max-width: 600px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    max-width: 700px;
+    margin: 20px auto;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    border-left: 8px solid #2196F3; /* Default blue accent */
+    animation: slideUp 0.5s ease-out;
 }
 
+/* Change card accent color based on which tab is open */
+#Bonds .problem-card { border-left-color: #ffb100; }
+#Equities .problem-card { border-left-color: #4caf50; }
+#WACC .problem-card { border-left-color: #9c27b0; }
+
+h3 { color: #102a43; margin-top: 0; }
+strong { color: #243b55; }
+
+/* Hidden Answer Section Styling */
 details {
-    margin-top: 15px;
-    padding: 10px;
-    background: #eef;
-    border-radius: 4px;
+    margin-top: 20px;
+    padding: 15px;
+    background: #f0f4f8;
+    border-radius: 10px;
     cursor: pointer;
 }
 
-@keyframes fadeEffect {
-    from {opacity: 0;}
-    to {opacity: 1;}
+summary { font-weight: 600; color: #486581; }
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
