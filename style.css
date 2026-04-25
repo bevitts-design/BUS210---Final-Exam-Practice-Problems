@@ -1,85 +1,91 @@
-/* please Import a clean, modern font */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #f0f4f8; /* Soft light blue-grey background */
+    /* Warm sunshine-white background */
+    background-color: #fffdf2; 
     margin: 0;
     padding: 20px;
-    color: #334e68;
+    color: #4e342e; /* Warm coffee-colored text instead of gray */
 }
 
-/* Make the title pop with a gradient */
 h1 {
     text-align: center;
-    font-weight: 600;
-    background: linear-gradient(90deg, #243b55, #141e30);
-    color: white;
-    padding: 40px 0;
+    /* Vibrant Sunrise Gradient */
+    background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+    color: #ffffff;
+    padding: 60px 0;
     margin: -20px -20px 40px -20px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    font-size: 2.5rem;
 }
 
-/* Styled Navigation Tabs */
 .tabs {
     display: flex;
     justify-content: center;
-    gap: 10px;
-    margin-bottom: 30px;
+    gap: 12px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
 }
 
 .tab-link {
-    background: white;
-    border: none;
-    padding: 12px 25px;
+    background: #fff9c4; /* Light lemon background */
+    border: 2px solid #fff59d;
+    padding: 14px 28px;
     cursor: pointer;
-    border-radius: 50px; /* Round pill shape */
+    border-radius: 15px;
     font-weight: 600;
-    color: #627d98;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    color: #795548;
+    transition: all 0.2s ease-in-out;
 }
 
-/* Category-specific active colors */
-.tab-link.active { color: white; transform: translateY(-3px); box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-/* Assign colors when active */
-.tab-link:nth-child(1).active { background-color: #2196F3; } /* TVM Blue */
-.tab-link:nth-child(2).active { background-color: #ffb100; } /* Bond Gold */
-.tab-link:nth-child(3).active { background-color: #4caf50; } /* Equity Green */
-.tab-link:nth-child(4).active { background-color: #9c27b0; } /* WACC Purple */
+.tab-link:hover {
+    background: #fff176;
+    transform: translateY(-2px);
+}
 
-/* Problem Cards */
+/* Active Tab "Sunny" Colors */
+.tab-link.active {
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 4px 15px rgba(255, 152, 0, 0.3);
+}
+
+/* TVM: Gold | Bonds: Orange | Equities: Amber | WACC: Deep Coral */
+.tab-link:nth-child(1).active { background-color: #ffc107; } 
+.tab-link:nth-child(2).active { background-color: #ffa000; } 
+.tab-link:nth-child(3).active { background-color: #ff8f00; } 
+.tab-link:nth-child(4).active { background-color: #ff7043; } 
+
 .problem-card {
     background: white;
-    max-width: 700px;
-    margin: 20px auto;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-    border-left: 8px solid #2196F3; /* Default blue accent */
-    animation: slideUp 0.5s ease-out;
+    max-width: 800px;
+    margin: 25px auto;
+    padding: 40px;
+    border-radius: 24px;
+    box-shadow: 0 10px 30px rgba(255, 160, 0, 0.1); /* Golden shadow */
+    border-top: 12px solid #ffc107; /* Bright Sun Yellow */
+    animation: sunRise 0.5s ease-out;
 }
 
-/* Change card accent color based on which tab is open */
-#Bonds .problem-card { border-left-color: #ffb100; }
-#Equities .problem-card { border-left-color: #4caf50; }
-#WACC .problem-card { border-left-color: #9c27b0; }
+/* Matching card borders to their active tab colors */
+#Bonds .problem-card { border-top-color: #ffa000; }
+#Equities .problem-card { border-top-color: #ff8f00; }
+#WACC .problem-card { border-top-color: #ff7043; }
 
-h3 { color: #102a43; margin-top: 0; }
-strong { color: #243b55; }
-
-/* Hidden Answer Section Styling */
-details {
-    margin-top: 20px;
-    padding: 15px;
-    background: #f0f4f8;
-    border-radius: 10px;
-    cursor: pointer;
+h3 {
+    color: #bf360c; /* Deep sunset orange */
+    font-size: 1.6rem;
+    margin-bottom: 15px;
 }
 
-summary { font-weight: 600; color: #486581; }
+ul li {
+    margin-bottom: 8px;
+    color: #5d4037;
+}
 
-@keyframes slideUp {
-    from { opacity: 0; transform: translateY(20px); }
+/* A soft fade-in animation */
+@keyframes sunRise {
+    from { opacity: 0; transform: translateY(15px); }
     to { opacity: 1; transform: translateY(0); }
 }

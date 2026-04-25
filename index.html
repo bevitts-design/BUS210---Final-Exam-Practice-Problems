@@ -1,15 +1,183 @@
-<div class="problem-card">
-        <h3>WACC #3: Comprehensive Cost of Capital</h3>
-        <div class="sub-problem" style="margin-top: 15px; border-top: 2px solid #8b5cf6; padding-top: 10px;">
-            <strong>Part D: The Final WACC</strong>
-            <p>The firm's target capital structure is 40% Debt, 10% Preferred Stock, and 50% Common Equity.</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>210 Final Exam Practice Problems</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>☀️ Finance 210 Final Review</h1>
+
+    <div class="tabs">
+        <button class="tab-link active" onclick="openGroup(event, 'TVM')">⏳ TVM</button>
+        <button class="tab-link" onclick="openGroup(event, 'Bonds')">📜 Bonds</button>
+        <button class="tab-link" onclick="openGroup(event, 'Equities')">📈 Equities</button>
+        <button class="tab-link" onclick="openGroup(event, 'WACC')">💼 WACC</button>
+    </div>
+
+    <div id="TVM" class="tab-content" style="display:block;">
+        <div class="problem-card">
+            <h3>TVM #1: Retirement Savings</h3>
+            <p><strong>The Question:</strong> You are 35 years old and starting to plan for retirement. You have $10,000 to roll over from an old job and you plan to add $500 every month. If you earn an 8.00% return, how much will you have in 30 years?</p>
+            <strong>Problem Data:</strong>
             <ul>
-                <li><strong>Calculate the WACC for the firm.</strong></li>
+                <li>Current Starting Amount (PV): $10,000</li>
+                <li>Monthly Savings (PMT): $500</li>
+                <li>Annual Interest Rate: 8.00%</li>
+                <li>Time: 30 years</li>
+                <li>Compounding: Monthly</li>
             </ul>
         </div>
-    </div> </div> <script>
-    function openGroup(evt, groupName) {
-        // ... rest of your script ...
+
+        <div class="problem-card">
+            <h3>TVM #2: Car Loan Monthly Payment</h3>
+            <p><strong>The Question:</strong> You bought a new car for $25,000. You are paying it off over 5 years with an 8.00% APR. What is your monthly payment, and how much total interest will you pay over the life of the loan?</p>
+            <strong>Problem Data:</strong>
+            <ul>
+                <li>Loan Amount (PV): $25,000</li>
+                <li>Annual Rate (APR): 8.00%</li>
+                <li>Term: 5 Years (60 months)</li>
+                <li>Compounding: Monthly</li>
+            </ul>
+        </div>
+
+        <div class="problem-card">
+            <h3>TVM #3: Calculating Time (n)</h3>
+            <p><strong>The Question:</strong> How long does it take $5,000 to grow to $10,000 at a 9.00% annual APR?</p>
+            <strong>Problem Data:</strong>
+            <ul>
+                <li>Starting Amount (PV): $5,000</li>
+                <li>Ending Amount (FV): $10,000</li>
+                <li>Annual Rate (I/Y): 9.00%</li>
+                <li>Compounding: Annual</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="Bonds" class="tab-content">
+        <div class="problem-card">
+            <h3>Bond #1: Zero-Coupon Bond</h3>
+            <p><strong>The Question:</strong> Calculate the dollar bond value of a zero-coupon bond that matures in 10 years if the market interest rate is 0.00%.</p>
+            <ul>
+                <li>Years to Maturity: 10</li>
+                <li>Market Rate: 0.00%</li>
+                <li>Compounding: Semiannual</li>
+                <li>Par Value: $1,000</li>
+            </ul>
+        </div>
+        
+        <div class="problem-card">
+            <h3>Bond #2: Coupon Bond and Total Return</h3>
+            <p><strong>The Question:</strong> A 15-year bond with semi-annual coupon payments and a 6.00% coupon rate is currently valued at $1,000.</p>
+            <ul>
+                <li>What is the initial yield on the bond?</li>
+                <li>After receiving the first coupon payment, you sell the bond at a yield of 5.00%. What is the price (PV) of the bond at the time of the sale?</li>
+                <li>Calculate the capital gain, interest earned, total dollar return, and total percentage return.</li>
+            </ul>
+            <strong>Problem Data:</strong>
+            <ul>
+                <li>Coupon Rate: 6.00%</li>
+                <li>Years to Maturity: 15</li>
+                <li>Compounding: Semi-annual</li>
+                <li>Par Value: $1,000</li>
+            </ul>
+        </div>
+        
+        <div class="problem-card">
+            <h3>Bond #3: Municipal Bond Yields & Taxable Equivalent</h3>
+            <p><strong>The Question:</strong> A 4.50% coupon municipal bond has 15 years left to maturity and has a price quote of 98.45%.</p>
+            <strong>Your Tasks:</strong>
+            <ul>
+                <li>Compute the bond’s current yield and YTM.</li>
+                <li>Compute the taxable equivalent yield (36% tax bracket).</li>
+                <li>Compute the yield to call (YTC).</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="Equities" class="tab-content">
+        <div class="problem-card">
+            <h3>Equity #1: Two-Stage Dividend Growth</h3>
+            <p><strong>The Question:</strong> A fast-growing firm recently paid a dividend of $0.50 per share. The dividend is expected to increase at 18.00% for the next 3 years. After that, growth will settle into a stable 10.00% rate indefinitely. If the required return is 12.00%, what is the stock's value today?</p>
+            <strong>Problem Data:</strong>
+            <ul>
+                <li>Recent Dividend (D0): $0.50</li>
+                <li>High Growth Rate (g1): 18.00% (for 3 years)</li>
+                <li>Stable Growth Rate (g2): 10.00% (forever after)</li>
+                <li>Discount Rate (r): 12.00%</li>
+            </ul>
+        </div>
+        
+        <div class="problem-card">
+            <h3>Equity #2: Portfolio Beta & CAPM</h3>
+            <p><strong>The Question:</strong> You have $30,000 to invest in Security A and Security B. You want your total portfolio to have a <strong>Beta of 1.60</strong>. Based on the market data, how many shares should you buy, and what are the expected returns?</p>
+            <strong>Problem Data:</strong>
+            <ul>
+                <li><strong>Total Investment:</strong> $30,000</li>
+                <li><strong>Security A:</strong> Beta = 2.00, Price = $16.00</li>
+                <li><strong>Security B:</strong> Beta = 1.25, Price = $25.00</li>
+                <li><strong>Risk-Free Rate:</strong> 3.00%</li>
+                <li><strong>Market Return:</strong> 12.00%</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="WACC" class="tab-content">
+        <div class="problem-card">
+            <h3>WACC #1: Acquisition & Perpetuity Valuation</h3>
+            <p><strong>The Question:</strong> Big Firm is considering buying Small Firm. The acquisition is expected to generate perpetual after-tax cash flows of $30,000 per year beginning next year.</p>
+            <strong>Problem Data:</strong>
+            <ul>
+                <li>Annual Cash Flow (C): $30,000</li>
+                <li>Cost of Equity (Re): 15.00%</li>
+                <li>After-Tax Cost of Debt (Rd): 5.00%</li>
+                <li>Capital Structure: 30% Debt / 70% Equity</li>
+            </ul>
+        </div>
+
+        <div class="problem-card">
+            <h3>WACC #2: Cost of Equity (CAPM)</h3>
+            <p><strong>The Question:</strong> Based upon the information below, what is IBM Corp's cost of equity using retained earnings?</p>
+            <strong>Problem Data:</strong>
+            <ul>
+                <li>Market Price: $50.00</li>
+                <li>Beta: 1.15</li>
+                <li>Risk-Free Rate: 5.00%</li>
+                <li>Expected Market Return: 15.00%</li>
+            </ul>
+        </div>
+
+        <div class="problem-card">
+            <h3>WACC #3: Comprehensive Cost of Capital</h3>
+            <p><strong>The Question:</strong> A firm is analyzing its capital structure to determine its weighted average cost of capital. You are provided with the following data for Debt, Preferred Stock, and Common Equity.</p>
+            
+            <div class="sub-problem">
+                <strong>Part A: Cost of Debt</strong>
+                <p>The firm can issue 20-year, 7.00% semiannual coupon bonds with a par value of $1,000. The bonds currently sell for $1,050. The marginal tax rate is 25.00%.</p>
+                <ul>
+                    <li>Calculate the after-tax cost of debt.</li>
+                </ul>
+            </div>
+
+            <div class="sub-problem" style="margin-top: 15px; border-top: 1px dashed #ccc; padding-top: 10px;">
+                <strong>Part B: Cost of Preferred Stock</strong>
+                <p>Preferred stock pays an annual dividend of $4.00 and sells for $50.00 per share. Flotation costs are 5.00%.</p>
+                <ul>
+                    <li>Calculate the cost of preferred stock ($r_p$).</li>
+                </ul>
+            </div>
+
+            <div class="sub-problem" style="margin-top: 15px; border-top: 2px solid #ff7043; padding-top: 10px;">
+                <strong>Part D: The Final WACC</strong>
+                <p>The firm's target capital structure is 40% Debt, 10% Preferred Stock, and 50% Common Equity.</p>
+                <ul>
+                    <li><strong>Calculate the WACC for the firm.</strong></li>
+                </ul>
+            </div>
+        </div>
+    </div>
 
     <script>
         function openGroup(evt, groupName) {
