@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>210 Final Review</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>Finance 210 Final Exam Review</h1>
+
+    <div class="tabs">
+        <button class="tab-link active" onclick="openGroup(event, 'TVM')">TVM</button>
+        <button class="tab-link" onclick="openGroup(event, 'Bonds')">Bonds</button>
+        <button class="tab-link" onclick="openGroup(event, 'Equities')">Equities</button>
+        <button class="tab-link" onclick="openGroup(event, 'WACC')">WACC</button>
+    </div>
+
+    <div id="TVM" class="tab-content" style="display:block;">
+        <div class="problem-card">
+            <h3>Problem 1</h3>
+            <p>Paste your TVM problem text here.</p>
+            <details>
+                <summary>Click for Formula Hint</summary>
+                <p>$$PV = \frac{FV}{(1 + r)^n}$$</p>
+            </details>
+        </div>
+    </div>
+
+    <div id="Bonds" class="tab-content">
+        <div class="problem-card">
+            <h3>Problem 1</h3>
+            <p>Paste your Bond problem text here.</p>
+        </div>
+    </div>
+
+    <div id="Equities" class="tab-content">
+        <div class="problem-card">
+            <h3>Problem 1</h3>
+            <p>Paste your Equity problem text here.</p>
+        </div>
+    </div>
+
+    <div id="WACC" class="tab-content">
+        <div class="problem-card">
+            <h3>Problem 1</h3>
+            <p>Paste your WACC problem text here.</p>
+            <details>
+                <summary>Click for Formula Hint</summary>
+                <p>$$WACC = (w_e \times r_e) + (w_d \times r_d \times (1 - T))$$</p>
+            </details>
+        </div>
+    </div>
+
+    <script>
+        function openGroup(evt, groupName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tab-link");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(groupName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
+</body>
+</html>

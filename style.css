@@ -1,0 +1,52 @@
+body { font-family: sans-serif; background: #f4f7f6; padding: 40px; color: #333; }
+h1 { text-align: center; }
+
+/* Tab Bar */
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #ccc;
+}
+
+.tab-link {
+    background: none;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: 0.3s;
+    border-bottom: 3px solid transparent;
+}
+
+.tab-link:hover { color: #2196F3; }
+.tab-link.active {
+    border-bottom: 3px solid #2196F3;
+    color: #2196F3;
+    font-weight: bold;
+}
+
+/* Problem Cards */
+.tab-content { display: none; animation: fadeEffect 0.5s; }
+
+.problem-card {
+    background: white;
+    padding: 20px;
+    margin: 10px auto;
+    max-width: 600px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+details {
+    margin-top: 15px;
+    padding: 10px;
+    background: #eef;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+@keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
