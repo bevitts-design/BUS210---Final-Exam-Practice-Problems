@@ -3,13 +3,362 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>210 Final Exam Practice Problems</title>
-    <link rel="stylesheet" href="style.css">
+    <title>BUS210 Final Exam Review</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy:      #0a1628;
+            --navy-mid:  #112240;
+            --navy-card: #0d1f3c;
+            --gold:      #c9a84c;
+            --gold-light:#e8c96d;
+            --ice:       #d6e4f0;
+            --muted:     #a8b8cc;
+            --white:     #ffffff;
+            --teal:      #3eb8a8;
+            --green:     #4caf7d;
+            --red:       #e05757;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: linear-gradient(160deg, #0a1628 0%, #112240 60%, #0d1f3c 100%);
+            min-height: 100vh;
+            color: var(--ice);
+            background-attachment: fixed;
+        }
+
+        /* Subtle gold grid overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(201,168,76,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(201,168,76,0.03) 1px, transparent 1px);
+            background-size: 48px 48px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .page-wrap {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px 80px;
+        }
+
+        /* ── HERO ── */
+        .hero {
+            text-align: center;
+            padding: 48px 0 40px;
+            border-bottom: 2px solid var(--gold);
+            margin-bottom: 40px;
+        }
+
+        .hero-eyebrow {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.72rem;
+            letter-spacing: 0.18em;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            color: var(--white);
+            line-height: 1.15;
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            color: var(--muted);
+            font-size: 0.95rem;
+            max-width: 520px;
+            margin: 0 auto;
+        }
+
+        /* ── TABS ── */
+        .tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+        }
+
+        .tab-link {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
+            padding: 10px 20px;
+            border: 1px solid rgba(201,168,76,0.3);
+            border-radius: 6px;
+            background: transparent;
+            color: var(--muted);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .tab-link:hover {
+            border-color: var(--gold);
+            color: var(--gold-light);
+            background: rgba(201,168,76,0.06);
+        }
+
+        .tab-link.active {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--navy);
+            font-weight: 600;
+        }
+
+        /* ── TAB CONTENT ── */
+        .tab-content { display: none; }
+
+        /* ── SECTION LABEL ── */
+        .section-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.68rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(201,168,76,0.2);
+        }
+
+        /* ── PROBLEM CARDS ── */
+        .problem-card {
+            background: var(--navy-mid);
+            border: 1px solid rgba(201,168,76,0.18);
+            border-radius: 10px;
+            padding: 24px 28px;
+            margin-bottom: 20px;
+            transition: border-color 0.2s;
+        }
+
+        .problem-card:hover {
+            border-color: rgba(201,168,76,0.4);
+        }
+
+        .problem-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: var(--white);
+            margin-bottom: 12px;
+        }
+
+        .problem-card p {
+            color: var(--ice);
+            line-height: 1.65;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+        }
+
+        .problem-card strong {
+            color: var(--gold-light);
+        }
+
+        .problem-card ul {
+            margin: 8px 0 0 18px;
+            color: var(--ice);
+            font-size: 0.92rem;
+            line-height: 1.8;
+        }
+
+        .sub-problem {
+            background: rgba(10,22,40,0.5);
+            border-radius: 6px;
+            padding: 14px 16px;
+            margin-top: 14px;
+            border-left: 3px solid var(--gold);
+        }
+
+        .sub-problem p {
+            margin-top: 6px;
+            margin-bottom: 6px;
+        }
+
+        /* ── SELF-CHECK SECTION ── */
+        .self-check-section {
+            margin-top: 40px;
+            background: linear-gradient(135deg, rgba(62,184,168,0.06) 0%, rgba(17,34,64,0.8) 100%);
+            border: 1px solid rgba(62,184,168,0.25);
+            border-radius: 12px;
+            padding: 28px;
+        }
+
+        .self-check-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+
+        .self-check-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--teal);
+        }
+
+        .self-check-sub {
+            color: var(--muted);
+            font-size: 0.88rem;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(62,184,168,0.15);
+        }
+
+        /* ── QUIZ CARDS ── */
+        .quiz-card {
+            background: var(--navy-card);
+            border: 1px solid rgba(62,184,168,0.12);
+            border-radius: 10px;
+            padding: 20px 22px;
+            margin-bottom: 16px;
+        }
+
+        .quiz-q {
+            font-size: 0.95rem;
+            color: var(--ice);
+            line-height: 1.6;
+            margin-bottom: 14px;
+            font-weight: 500;
+        }
+
+        .quiz-opts {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .quiz-opt {
+            padding: 10px 14px;
+            border: 1px solid rgba(201,168,76,0.2);
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.88rem;
+            color: var(--ice);
+            background: rgba(255,255,255,0.02);
+            transition: all 0.18s ease;
+            line-height: 1.5;
+        }
+
+        .quiz-opt:hover:not(.locked) {
+            border-color: var(--gold);
+            background: rgba(201,168,76,0.07);
+            color: var(--white);
+        }
+
+        .quiz-opt.correct {
+            border-color: var(--green);
+            background: rgba(76,175,125,0.12);
+            color: var(--white);
+        }
+
+        .quiz-opt.incorrect {
+            border-color: var(--red);
+            background: rgba(224,87,87,0.1);
+            color: var(--muted);
+            text-decoration: line-through;
+        }
+
+        .quiz-opt.locked { cursor: default; }
+
+        .quiz-feedback {
+            display: none;
+            margin-top: 12px;
+            padding: 10px 14px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            line-height: 1.55;
+        }
+
+        .quiz-feedback.show { display: block; }
+
+        .quiz-feedback.correct-fb {
+            background: rgba(76,175,125,0.1);
+            border-left: 3px solid var(--green);
+            color: #a8e6cf;
+        }
+
+        .quiz-feedback.incorrect-fb {
+            background: rgba(224,87,87,0.08);
+            border-left: 3px solid var(--red);
+            color: #f5a8a8;
+        }
+
+        /* Score badge */
+        .score-bar {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(62,184,168,0.15);
+        }
+
+        .score-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--muted);
+            letter-spacing: 0.08em;
+        }
+
+        .score-badge {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--teal);
+            background: rgba(62,184,168,0.1);
+            border: 1px solid rgba(62,184,168,0.3);
+            border-radius: 20px;
+            padding: 3px 12px;
+        }
+
+        .reset-btn {
+            margin-left: auto;
+            font-family: 'DM Mono', monospace;
+            font-size: 0.73rem;
+            letter-spacing: 0.06em;
+            color: var(--muted);
+            background: transparent;
+            border: 1px solid rgba(168,184,204,0.25);
+            border-radius: 4px;
+            padding: 4px 12px;
+            cursor: pointer;
+            transition: all 0.18s;
+        }
+
+        .reset-btn:hover {
+            color: var(--ice);
+            border-color: var(--muted);
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 600px) {
+            .tabs { gap: 6px; }
+            .tab-link { font-size: 0.73rem; padding: 8px 14px; }
+            .problem-card { padding: 18px 18px; }
+            .self-check-section { padding: 20px 16px; }
+        }
+    </style>
 </head>
 <body>
+<div class="page-wrap">
 
-    <h1>☀️ Finance 210 Final Review</h1>
+    <!-- HERO -->
+    <div class="hero">
+        <div class="hero-eyebrow">Endicott College · BUS210 · Introduction to Finance</div>
+        <h1>☀️ Final Exam Review</h1>
+        <p>Work through the in-class problems with your professor, then test yourself with the self-check questions at the bottom of each section.</p>
+    </div>
 
+    <!-- TABS -->
     <div class="tabs">
         <button class="tab-link active" onclick="openGroup(event, 'TVM')">⏳ TVM</button>
         <button class="tab-link" onclick="openGroup(event, 'Bonds')">📜 Bonds</button>
@@ -17,7 +366,13 @@
         <button class="tab-link" onclick="openGroup(event, 'WACC')">💼 WACC</button>
     </div>
 
+    <!-- ══════════════════════════════════════
+         TVM TAB
+    ══════════════════════════════════════ -->
     <div id="TVM" class="tab-content" style="display:block;">
+
+        <div class="section-label">📋 In-Class Problems · Ch. 4 &amp; 5</div>
+
         <div class="problem-card">
             <h3>TVM #1: Retirement Savings</h3>
             <p><strong>The Question:</strong> You are 35 years old and starting to plan for retirement. You have $10,000 to roll over from an old job and you plan to add $500 every month. If you earn an 8.00% return, how much will you have in 30 years?</p>
@@ -54,9 +409,78 @@
                 <li>Compounding: Annual</li>
             </ul>
         </div>
-    </div>
 
+        <!-- SELF-CHECK: TVM -->
+        <div class="self-check-section">
+            <div class="self-check-header">
+                <span style="font-size:1.5rem;">🧠</span>
+                <h2>Self-Check: Go Further</h2>
+            </div>
+            <p class="self-check-sub">Finished the class problems? Try these on your own. Click any answer to see instant feedback.</p>
+
+            <!-- Q1 -->
+            <div class="quiz-card" id="tvm-q1">
+                <div class="quiz-q">1. 💰 You invest $2,000 today at 6% annual interest, compounded annually. What is the future value after 10 years?</div>
+                <div class="quiz-opts">
+                    <div class="quiz-opt" onclick="answer('tvm-q1',this,false,'Close - but this is simple interest ($2,000 × 1.60). Compound interest grows faster because you earn interest on your interest each year.')">A. $3,200.00</div>
+                    <div class="quiz-opt" onclick="answer('tvm-q1',this,true,'Correct! FV = $2,000 × (1.06)^10 = $2,000 × 1.7908 = $3,581.70. This is the power of compounding - you earned $1,581.70 in interest, not just $1,200.')">B. $3,581.70</div>
+                    <div class="quiz-opt" onclick="answer('tvm-q1',this,false,'This would require a higher rate or longer time period. Double-check: $2,000 × (1.06)^10.')">C. $4,000.00</div>
+                    <div class="quiz-opt" onclick="answer('tvm-q1',this,false,'This overstates the result. Remember the base is $2,000 and the rate is 6%, not 60%.')">D. $5,743.49</div>
+                </div>
+                <div class="quiz-feedback" id="tvm-q1-fb"></div>
+            </div>
+
+            <!-- Q2 -->
+            <div class="quiz-card" id="tvm-q2">
+                <div class="quiz-q">2. 🏠 A mortgage lender offers you a $200,000 loan at 6.00% APR for 30 years with monthly payments. Which calculator inputs are correct?</div>
+                <div class="quiz-opts">
+                    <div class="quiz-opt" onclick="answer('tvm-q2',this,false,'Using N=30 treats compounding as annual - but the payments are monthly. N must equal the total number of payment periods.')">A. N=30, I/Y=6, PV=200,000, FV=0</div>
+                    <div class="quiz-opt" onclick="answer('tvm-q2',this,true,'Correct! N=360 (30×12 months), I/Y=0.5 (6%÷12), PV=200,000, FV=0. This gives a monthly payment of about $1,199.10.')">B. N=360, I/Y=0.5, PV=200,000, FV=0</div>
+                    <div class="quiz-opt" onclick="answer('tvm-q2',this,false,'Dividing N by 12 and multiplying I/Y by 12 is backwards. You multiply N by 12 and divide I/Y by 12 for monthly compounding.')">C. N=2.5, I/Y=72, PV=200,000, FV=0</div>
+                    <div class="quiz-opt" onclick="answer('tvm-q2',this,false,'N=360 is right, but I/Y must be the monthly rate. Divide the annual rate by 12: 6%/12 = 0.5% per month.')">D. N=360, I/Y=6, PV=200,000, FV=0</div>
+                </div>
+                <div class="quiz-feedback" id="tvm-q2-fb"></div>
+            </div>
+
+            <!-- Q3 -->
+            <div class="quiz-card" id="tvm-q3">
+                <div class="quiz-q">3. 📈 Which of the following best describes the relationship between present value and the discount rate?</div>
+                <div class="quiz-opts">
+                    <div class="quiz-opt" onclick="answer('tvm-q3',this,false,'This is backwards. As the discount rate rises, the denominator in PV = FV / (1+r)^n gets larger, so PV falls.')">A. As the discount rate increases, present value increases</div>
+                    <div class="quiz-opt" onclick="answer('tvm-q3',this,true,'Correct! PV and the discount rate are inversely related. A higher rate means future cash flows are worth less today - you can earn more elsewhere, so you pay less for future money.')">B. As the discount rate increases, present value decreases</div>
+                    <div class="quiz-opt" onclick="answer('tvm-q3',this,false,'PV is very sensitive to the discount rate - it is one of the most important drivers of value in finance.')">C. The discount rate has no effect on present value</div>
+                    <div class="quiz-opt" onclick="answer('tvm-q3',this,false,'The relationship is consistent and predictable - it is always inverse. PV falls as the rate rises, every time.')">D. The relationship depends on the time period</div>
+                </div>
+                <div class="quiz-feedback" id="tvm-q3-fb"></div>
+            </div>
+
+            <!-- Q4 -->
+            <div class="quiz-card" id="tvm-q4">
+                <div class="quiz-q">4. 🎯 You want to have $50,000 in 8 years. The account earns 5% compounded annually. How much do you need to deposit today?</div>
+                <div class="quiz-opts">
+                    <div class="quiz-opt" onclick="answer('tvm-q4',this,false,'This applies simple interest: $50,000 / 1.40 = $35,714. Use the compound PV formula instead: PV = FV / (1+r)^n.')">A. $35,714.29</div>
+                    <div class="quiz-opt" onclick="answer('tvm-q4',this,false,'Check your exponent. PV = $50,000 / (1.05)^8 = $50,000 / 1.4775. Try recalculating.')">B. $31,250.00</div>
+                    <div class="quiz-opt" onclick="answer('tvm-q4',this,true,'Correct! PV = $50,000 / (1.05)^8 = $50,000 / 1.4775 = $33,844.10. Deposit about $33,844 today and let compounding do the rest.')">C. $33,844.10</div>
+                    <div class="quiz-opt" onclick="answer('tvm-q4',this,false,'This is too low. At 5% for 8 years, (1.05)^8 = 1.4775, not 2.0. Recalculate your future value factor.')">D. $25,000.00</div>
+                </div>
+                <div class="quiz-feedback" id="tvm-q4-fb"></div>
+            </div>
+
+            <div class="score-bar">
+                <span class="score-label">YOUR SCORE</span>
+                <span class="score-badge" id="tvm-score">0 / 4</span>
+                <button class="reset-btn" onclick="resetSection('tvm', 4)">↺ Reset</button>
+            </div>
+        </div>
+    </div><!-- end TVM -->
+
+    <!-- ══════════════════════════════════════
+         BONDS TAB
+    ══════════════════════════════════════ -->
     <div id="Bonds" class="tab-content">
+
+        <div class="section-label">📋 In-Class Problems · Ch. 7</div>
+
         <div class="problem-card">
             <h3>Bond #1: Zero-Coupon Bond</h3>
             <p><strong>The Question:</strong> Calculate the dollar bond value of a zero-coupon bond that matures in 10 years if the market interest rate is 0.00%.</p>
@@ -67,7 +491,7 @@
                 <li>Par Value: $1,000</li>
             </ul>
         </div>
-        
+
         <div class="problem-card">
             <h3>Bond #2: Coupon Bond and Total Return</h3>
             <p><strong>The Question:</strong> A 15-year bond with semi-annual coupon payments and a 6.00% coupon rate is currently valued at $1,000.</p>
@@ -84,20 +508,89 @@
                 <li>Par Value: $1,000</li>
             </ul>
         </div>
-        
+
         <div class="problem-card">
-            <h3>Bond #3: Municipal Bond Yields & Taxable Equivalent</h3>
+            <h3>Bond #3: Municipal Bond Yields &amp; Taxable Equivalent</h3>
             <p><strong>The Question:</strong> A 4.50% coupon municipal bond has 15 years left to maturity and has a price quote of 98.45%.</p>
             <strong>Your Tasks:</strong>
             <ul>
-                <li>Compute the bond’s current yield and YTM.</li>
+                <li>Compute the bond's current yield and YTM.</li>
                 <li>Compute the taxable equivalent yield (36% tax bracket).</li>
                 <li>Compute the yield to call (YTC).</li>
             </ul>
         </div>
-    </div>
 
+        <!-- SELF-CHECK: BONDS -->
+        <div class="self-check-section">
+            <div class="self-check-header">
+                <span style="font-size:1.5rem;">🧠</span>
+                <h2>Self-Check: Go Further</h2>
+            </div>
+            <p class="self-check-sub">Finished the class problems? Try these on your own. Click any answer to see instant feedback.</p>
+
+            <!-- Q1 -->
+            <div class="quiz-card" id="bond-q1">
+                <div class="quiz-q">1. 📜 A bond has a coupon rate of 5% and is currently priced above par (at a premium). Which statement is true about its yield to maturity (YTM)?</div>
+                <div class="quiz-opts">
+                    <div class="quiz-opt" onclick="answer('bond-q1',this,false,'When a bond trades at a premium, investors are paying more than par, which drives the effective yield DOWN below the coupon rate.')">A. YTM is greater than the coupon rate</div>
+                    <div class="quiz-opt" onclick="answer('bond-q1',this,false,'YTM equals the coupon rate only when the bond is priced exactly at par ($1,000). A premium price changes this relationship.')">B. YTM equals the coupon rate</div>
+                    <div class="quiz-opt" onclick="answer('bond-q1',this,true,'Correct! When a bond trades at a premium, its price is above par. Investors pay extra upfront, so they earn a lower yield than the stated coupon rate. Price and yield move in opposite directions.')">C. YTM is less than the coupon rate</div>
+                    <div class="quiz-opt" onclick="answer('bond-q1',this,false,'The premium/discount relationship to YTM is definitive - not ambiguous. Premium price always means YTM is below the coupon rate.')">D. The relationship cannot be determined</div>
+                </div>
+                <div class="quiz-feedback" id="bond-q1-fb"></div>
+            </div>
+
+            <!-- Q2 -->
+            <div class="quiz-card" id="bond-q2">
+                <div class="quiz-q">2. 💸 A bond has a par value of $1,000, a 7% annual coupon, and 5 years to maturity. If the market rate rises to 9%, what happens to the bond's price?</div>
+                <div class="quiz-opts">
+                    <div class="quiz-opt" onclick="answer('bond-q2',this,false,'Bond prices and interest rates move in OPPOSITE directions. When rates rise, existing bonds paying lower coupons become less attractive, so their prices fall.')">A. The price rises above $1,000</div>
+                    <div class="quiz-opt" onclick="answer('bond-q2',this,false,'The price stays at par only when market rate = coupon rate. Since the market rate (9%) now exceeds the coupon (7%), the bond must sell at a discount.')">B. The price stays at $1,000</div>
+                    <div class="quiz-opt" onclick="answer('bond-q2',this,true,'Correct! When market rates rise above the coupon rate, the bond becomes less attractive and trades at a discount. PV = 70/(1.09) + 70/(1.09)^2 + ... + 1070/(1.09)^5 = $922.21.')">C. The price falls below $1,000</div>
+                    <div class="quiz-opt" onclick="answer('bond-q2',this,false,'Price changes are predictable from the relationship between the coupon rate and market rate - not random.')">D. The price change is unpredictable</div>
+                </div>
+                <div class="quiz-feedback" id="bond-q2-fb"></div>
+            </div>
+
+            <!-- Q3 -->
+            <div class="quiz-card" id="bond-q3">
+                <div class="quiz-q">3. 🏛️ An investor in the 32% tax bracket is comparing a municipal bond yielding 4.2% to a corporate bond. What taxable equivalent yield (TEY) makes the muni and corporate bond equivalent?</div>
+                <div class="quiz-opts">
+                    <div class="quiz-opt" onclick="answer('bond-q3',this,false,'This underestimates the tax benefit. TEY = Muni yield / (1 - tax rate) = 4.2% / (1 - 0.32). Recalculate.')">A. 4.20%</div>
+                    <div class="quiz-opt" onclick="answer('bond-q3',this,false,'Try the formula: TEY = 4.2% / (1 - 0.32) = 4.2% / 0.68. This option applies the wrong denominator.')">B. 5.54%</div>
+                    <div class="quiz-opt" onclick="answer('bond-q3',this,true,'Correct! TEY = 4.2% / (1 - 0.32) = 4.2% / 0.68 = 6.18%. A corporate bond must yield at least 6.18% after tax to beat this muni bond for a 32% taxpayer.')">C. 6.18%</div>
+                    <div class="quiz-opt" onclick="answer('bond-q3',this,false,'This overstates the result. The denominator is (1 - 0.32) = 0.68, not a smaller number. Check your arithmetic.')">D. 7.00%</div>
+                </div>
+                <div class="quiz-feedback" id="bond-q3-fb"></div>
+            </div>
+
+            <!-- Q4 -->
+            <div class="quiz-card" id="bond-q4">
+                <div class="quiz-q">4. ⚖️ What is the current yield of a bond with a $1,000 par value, an 8% annual coupon, currently priced at $950?</div>
+                <div class="quiz-opts">
+                    <div class="quiz-opt" onclick="answer('bond-q4',this,false,'8% is the coupon rate, not the current yield. Current yield uses the actual market price, not par value: Annual Coupon / Current Price.')">A. 8.00%</div>
+                    <div class="quiz-opt" onclick="answer('bond-q4',this,true,'Correct! Current Yield = Annual Coupon / Current Price = $80 / $950 = 8.42%. Since the bond is trading at a discount, the current yield is higher than the coupon rate.')">B. 8.42%</div>
+                    <div class="quiz-opt" onclick="answer('bond-q4',this,false,'Check your calculation. Annual coupon = $1,000 × 8% = $80. Current yield = $80 / $950.')">C. 9.50%</div>
+                    <div class="quiz-opt" onclick="answer('bond-q4',this,false,'7.60% would result from dividing by a number larger than par. Remember: current price is $950, not $1,050.')">D. 7.60%</div>
+                </div>
+                <div class="quiz-feedback" id="bond-q4-fb"></div>
+            </div>
+
+            <div class="score-bar">
+                <span class="score-label">YOUR SCORE</span>
+                <span class="score-badge" id="bond-score">0 / 4</span>
+                <button class="reset-btn" onclick="resetSection('bond', 4)">↺ Reset</button>
+            </div>
+        </div>
+    </div><!-- end Bonds -->
+
+    <!-- ══════════════════════════════════════
+         EQUITIES TAB
+    ══════════════════════════════════════ -->
     <div id="Equities" class="tab-content">
+
+        <div class="section-label">📋 In-Class Problems · Ch. 8, 9 &amp; 10</div>
+
         <div class="problem-card">
             <h3>Equity #1: Two-Stage Dividend Growth</h3>
             <p><strong>The Question:</strong> A fast-growing firm recently paid a dividend of $0.50 per share. The dividend is expected to increase at 18.00% for the next 3 years. After that, growth will settle into a stable 10.00% rate indefinitely. If the required return is 12.00%, what is the stock's value today?</p>
@@ -109,9 +602,9 @@
                 <li>Discount Rate (r): 12.00%</li>
             </ul>
         </div>
-        
+
         <div class="problem-card">
-            <h3>Equity #2: Portfolio Beta & CAPM</h3>
+            <h3>Equity #2: Portfolio Beta &amp; CAPM</h3>
             <p><strong>The Question:</strong> You have $30,000 to invest in Security A and Security B. You want your total portfolio to have a <strong>Beta of 1.60</strong>. Based on the market data, how many shares should you buy, and what are the expected returns?</p>
             <strong>Problem Data:</strong>
             <ul>
@@ -122,11 +615,80 @@
                 <li><strong>Market Return:</strong> 12.00%</li>
             </ul>
         </div>
-    </div>
 
+        <!-- SELF-CHECK: EQUITIES -->
+        <div class="self-check-section">
+            <div class="self-check-header">
+                <span style="font-size:1.5rem;">🧠</span>
+                <h2>Self-Check: Go Further</h2>
+            </div>
+            <p class="self-check-sub">Finished the class problems? Try these on your own. Click any answer to see instant feedback.</p>
+
+            <!-- Q1 -->
+            <div class="quiz-card" id="eq-q1">
+                <div class="quiz-q">1. 📈 A stock just paid a dividend of $2.00 (D0). Dividends are expected to grow at a constant rate of 4% forever. If the required return is 10%, what is the stock's price today using the Gordon Growth Model?</div>
+                <div class="quiz-opts">
+                    <div class="quiz-opt" onclick="answer('eq-q1',this,false,'This uses D0 instead of D1. The Gordon Growth Model uses next year\'s dividend: D1 = D0 × (1+g) = $2.00 × 1.04 = $2.08.')">A. $33.33</div>
+                    <div class="quiz-opt" onclick="answer('eq-q1',this,true,'Correct! D1 = $2.00 × 1.04 = $2.08. P0 = D1 / (r - g) = $2.08 / (0.10 - 0.04) = $2.08 / 0.06 = $34.67.')">B. $34.67</div>
+                    <div class="quiz-opt" onclick="answer('eq-q1',this,false,'Check your denominator. r - g = 10% - 4% = 6% = 0.06, not 0.14. Recalculate.')">C. $14.86</div>
+                    <div class="quiz-opt" onclick="answer('eq-q1',this,false,'$20.00 would result from dividing D0 by 10% with no growth. Make sure you use D1 and subtract the growth rate from r.')">D. $20.00</div>
+                </div>
+                <div class="quiz-feedback" id="eq-q1-fb"></div>
+            </div>
+
+            <!-- Q2 -->
+            <div class="quiz-card" id="eq-q2">
+                <div class="quiz-q">2. ⚡ A stock has a beta of 1.5. The risk-free rate is 3% and the expected market return is 11%. Using CAPM, what is the expected return on this stock?</div>
+                <div class="quiz-opts">
+                    <div class="quiz-opt" onclick="answer('eq-q2',this,false,'This applies the market return directly without adjusting for the stock\'s beta. CAPM: E(r) = Rf + Beta × (Rm - Rf).')">A. 11.00%</div>
+                    <div class="quiz-opt" onclick="answer('eq-q2',this,false,'Check your market risk premium. (Rm - Rf) = 11% - 3% = 8%, not 11%. Then multiply by beta and add the risk-free rate.')">B. 19.50%</div>
+                    <div class="quiz-opt" onclick="answer('eq-q2',this,true,'Correct! E(r) = 3% + 1.5 × (11% - 3%) = 3% + 1.5 × 8% = 3% + 12% = 15%. Since beta > 1, this stock is riskier than the market and demands a higher return.')">C. 15.00%</div>
+                    <div class="quiz-opt" onclick="answer('eq-q2',this,false,'16.5% would result from E(r) = Beta × Rm = 1.5 × 11%. You must subtract the risk-free rate before multiplying by beta.')">D. 16.50%</div>
+                </div>
+                <div class="quiz-feedback" id="eq-q2-fb"></div>
+            </div>
+
+            <!-- Q3 -->
+            <div class="quiz-card" id="eq-q3">
+                <div class="quiz-q">3. 🎲 Which of the following types of risk can be eliminated through diversification?</div>
+                <div class="quiz-opts">
+                    <div class="quiz-opt" onclick="answer('eq-q3',this,false,'Systematic risk (also called market risk or non-diversifiable risk) affects ALL assets and cannot be diversified away. It is measured by beta.')">A. Systematic risk</div>
+                    <div class="quiz-opt" onclick="answer('eq-q3',this,false,'Market risk is another name for systematic risk - the risk of broad market movements. Diversification cannot eliminate this.')">B. Market risk</div>
+                    <div class="quiz-opt" onclick="answer('eq-q3',this,true,'Correct! Unsystematic risk (also called firm-specific or idiosyncratic risk) is unique to individual companies. By holding many different stocks, these risks cancel each other out in a well-diversified portfolio.')">C. Unsystematic (firm-specific) risk</div>
+                    <div class="quiz-opt" onclick="answer('eq-q3',this,false,'Interest rate risk is a form of systematic risk that affects all bond-like assets. It cannot be diversified away within an asset class.')">D. Interest rate risk</div>
+                </div>
+                <div class="quiz-feedback" id="eq-q3-fb"></div>
+            </div>
+
+            <!-- Q4 -->
+            <div class="quiz-card" id="eq-q4">
+                <div class="quiz-q">4. 🔍 A stock plots ABOVE the Security Market Line (SML). What does this mean for the stock?</div>
+                <div class="quiz-opts">
+                    <div class="quiz-opt" onclick="answer('eq-q4',this,false,'Overpriced stocks plot BELOW the SML - their actual return is lower than what CAPM says they should earn given their risk.')">A. The stock is overpriced and expected to decline</div>
+                    <div class="quiz-opt" onclick="answer('eq-q4',this,true,'Correct! A stock above the SML offers a higher return than CAPM predicts for its level of risk - it is underpriced (a bargain). Rational investors will buy it, driving the price up until it falls back to the SML.')">B. The stock is underpriced and offers a positive alpha</div>
+                    <div class="quiz-opt" onclick="answer('eq-q4',this,false,'Fairly priced stocks sit exactly ON the SML - their actual return equals the CAPM required return. Above the line means something different.')">C. The stock is fairly priced</div>
+                    <div class="quiz-opt" onclick="answer('eq-q4',this,false,'Beta (systematic risk) determines the x-axis position on the SML, but position above or below the line tells us about pricing - not beta level.')">D. The stock has a beta greater than 1</div>
+                </div>
+                <div class="quiz-feedback" id="eq-q4-fb"></div>
+            </div>
+
+            <div class="score-bar">
+                <span class="score-label">YOUR SCORE</span>
+                <span class="score-badge" id="eq-score">0 / 4</span>
+                <button class="reset-btn" onclick="resetSection('eq', 4)">↺ Reset</button>
+            </div>
+        </div>
+    </div><!-- end Equities -->
+
+    <!-- ══════════════════════════════════════
+         WACC TAB
+    ══════════════════════════════════════ -->
     <div id="WACC" class="tab-content">
+
+        <div class="section-label">📋 In-Class Problems · WACC</div>
+
         <div class="problem-card">
-            <h3>WACC #1: Acquisition & Perpetuity Valuation</h3>
+            <h3>WACC #1: Acquisition &amp; Perpetuity Valuation</h3>
             <p><strong>The Question:</strong> Big Firm is considering buying Small Firm. The acquisition is expected to generate perpetual after-tax cash flows of $30,000 per year beginning next year.</p>
             <strong>Problem Data:</strong>
             <ul>
@@ -151,56 +713,98 @@
 
         <div class="problem-card">
             <h3>WACC #3: Comprehensive Cost of Capital</h3>
-            <p><strong>The Question:</strong> A firm is analyzing its capital structure to determine its weighted average cost of capital. You are provided with the following data for Debt, Preferred Stock, and Common Equity. Cacluate the cost of all capital types.  Use the Average of CAPM and CGM for the Cost of the Common Equity/ </p>
-            
+            <p><strong>The Question:</strong> A firm is analyzing its capital structure to determine its weighted average cost of capital. Calculate the cost of all capital types. Use the average of CAPM and CGM for the cost of common equity.</p>
+
             <div class="sub-problem">
                 <strong>Part A: Cost of Debt</strong>
                 <p>The firm can issue 20-year, 7.00% semiannual coupon bonds with a par value of $1,000. The bonds currently sell for $1,050. The marginal tax rate is 21.00%.</p>
-                <ul>
-                    <li>Calculate the after-tax cost of debt.</li>
-                </ul>
+                <ul><li>Calculate the after-tax cost of debt.</li></ul>
             </div>
 
-            <div class="sub-problem" style="margin-top: 15px; border-top: 1px dashed #ccc; padding-top: 10px;">
+            <div class="sub-problem">
                 <strong>Part B: Cost of Preferred Stock</strong>
-                <p>Preferred stock pays an annual dividend of $5.00 and sells for $52.00 per share. </p>
-                <ul>
-                    <li>Calculate the cost of preferred stock ($r_p$).</li>
-                </ul>
+                <p>Preferred stock pays an annual dividend of $5.00 and sells for $52.00 per share.</p>
+                <ul><li>Calculate the cost of preferred stock (r<sub>p</sub>).</li></ul>
             </div>
-	<div class="sub-problem" style="margin-top: 15px; border-top: 1px dashed #ccc; padding-top: 10px;">
+
+            <div class="sub-problem">
                 <strong>Part C: Cost of Equity</strong>
-                <p>Common stock is expected to pay a dividend of $3.00 at it next payment and sells for $45.00 per share. Flotation costs are 7.00%. The firms beta is 1.40. The expected growth rate of future dividends is 5.00%. The Risk Free rate is 4.00% and the expected return on the market is 10.00%. </p>
-                <ul>
-                    <li>Calculate the cost of common stock ($r_p$).</li>
-                </ul>
+                <p>Common stock is expected to pay a dividend of $3.00 at its next payment and sells for $45.00 per share. Flotation costs are 7.00%. The firm's beta is 1.40. The expected growth rate of future dividends is 5.00%. The risk-free rate is 4.00% and the expected return on the market is 10.00%.</p>
+                <ul><li>Calculate the cost of common stock (r<sub>e</sub>).</li></ul>
             </div>
 
-
-            <div class="sub-problem" style="margin-top: 15px; border-top: 2px solid #ff7043; padding-top: 10px;">
+            <div class="sub-problem" style="border-left: 3px solid #e05757;">
                 <strong>Part D: The Final WACC</strong>
                 <p>The firm's target capital structure is 40% Debt, 10% Preferred Stock, and 50% Common Equity.</p>
-                <ul>
-                    <li><strong>Calculate the WACC for the firm.</strong></li>
-                </ul>
+                <ul><li><strong>Calculate the WACC for the firm.</strong></li></ul>
             </div>
         </div>
-    </div>
+    </div><!-- end WACC -->
 
-    <script>
-        function openGroup(evt, groupName) {
-            var i, tabcontent, tablinks;
-            tabcontent = document.getElementsByClassName("tab-content");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
+</div><!-- end page-wrap -->
+
+<script>
+    // ── TAB SWITCHING ──
+    function openGroup(evt, groupName) {
+        document.querySelectorAll('.tab-content').forEach(el => el.style.display = 'none');
+        document.querySelectorAll('.tab-link').forEach(el => el.classList.remove('active'));
+        document.getElementById(groupName).style.display = 'block';
+        evt.currentTarget.classList.add('active');
+    }
+
+    // ── QUIZ ANSWER HANDLER ──
+    // prefix = section prefix (e.g. 'tvm', 'bond', 'eq')
+    // clicked = the option element
+    // isCorrect = boolean
+    // explanation = feedback text
+    function answer(cardId, clicked, isCorrect, explanation) {
+        const card = document.getElementById(cardId);
+        if (card.dataset.answered) return; // already answered
+
+        const opts = card.querySelectorAll('.quiz-opt');
+        opts.forEach(o => o.classList.add('locked'));
+        clicked.classList.add(isCorrect ? 'correct' : 'incorrect');
+
+        const fb = document.getElementById(cardId + '-fb');
+        fb.textContent = (isCorrect ? '✅ ' : '❌ ') + explanation;
+        fb.className = 'quiz-feedback show ' + (isCorrect ? 'correct-fb' : 'incorrect-fb');
+
+        card.dataset.answered = isCorrect ? 'correct' : 'incorrect';
+
+        // update score
+        const prefix = cardId.replace(/-q\d+$/, '');
+        updateScore(prefix);
+    }
+
+    function updateScore(prefix) {
+        const section = prefix === 'tvm' ? 'TVM' : prefix === 'bond' ? 'Bonds' : 'Equities';
+        const tab = document.getElementById(section);
+        const cards = tab.querySelectorAll('.quiz-card[id^="' + prefix + '"]');
+        let correct = 0, answered = 0;
+        cards.forEach(c => {
+            if (c.dataset.answered) {
+                answered++;
+                if (c.dataset.answered === 'correct') correct++;
             }
-            tablinks = document.getElementsByClassName("tab-link");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
-            }
-            document.getElementById(groupName).style.display = "block";
-            evt.currentTarget.className += " active";
+        });
+        const badge = document.getElementById(prefix + '-score');
+        if (badge) badge.textContent = correct + ' / ' + cards.length;
+    }
+
+    function resetSection(prefix, count) {
+        for (let i = 1; i <= count; i++) {
+            const card = document.getElementById(prefix + '-q' + i);
+            if (!card) continue;
+            delete card.dataset.answered;
+            card.querySelectorAll('.quiz-opt').forEach(o => {
+                o.className = 'quiz-opt';
+            });
+            const fb = document.getElementById(prefix + '-q' + i + '-fb');
+            if (fb) { fb.className = 'quiz-feedback'; fb.textContent = ''; }
         }
-    </script>
+        const badge = document.getElementById(prefix + '-score');
+        if (badge) badge.textContent = '0 / ' + count;
+    }
+</script>
 </body>
 </html>
